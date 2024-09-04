@@ -27,7 +27,7 @@ public class DriverManager {
 
 //        threadLocalDriver.set(new ChromeDriver(chromeOptions));
         try {
-            threadLocalDriver.set(new RemoteWebDriver(new URL("http://a23e678ea555349409f2bf001b158f16-1466972497.ap-south-1.elb.amazonaws.com:4444"),chromeOptions));
+            threadLocalDriver.set(new RemoteWebDriver(new URL("http://localhost:4444"),chromeOptions));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
