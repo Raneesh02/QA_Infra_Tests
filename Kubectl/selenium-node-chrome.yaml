@@ -10,11 +10,11 @@ spec:
   template:
     metadata:
       labels:
-      app: selenium-node-chrome
+        app: selenium-node-chrome
     spec:
       containers:
         - name: selenium-node-chrome
-          image: seleniarm/node-chromium:latest
+          image: selenium/node-chrome:latest
           env:
             - name: TZ
               value: Asia/Kolkata
