@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: selenium-node-chrome
+      app: selenium-node-chrome
     spec:
       containers:
         - name: selenium-node-chrome
