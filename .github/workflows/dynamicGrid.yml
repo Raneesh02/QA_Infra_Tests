@@ -71,11 +71,11 @@ jobs:
         id: get_service_url
         run: |
           SERVICE_URL=$(kubectl get svc selenium-hub-service -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
-          echo "SERVICE_URL=${SELGRID_URL}" >> $GITHUB_ENV
-          echo "Service URL is ${{ env.SELGRID_URL }}"
+          echo "SERVICE_URL=${SERVICE_URL}" >> $GITHUB_ENV
+          echo "Service URL is ${{ env.SERVICE_URL }}"
 
       - name: test with maven
-        run: mvn clean test
+        run: mvn clean test -Dselenium.gridurl=${{ env.SERVICE_URL }}
       - name: Report test results
         uses: dorny/test-reporter@v1.9.1
         with:
