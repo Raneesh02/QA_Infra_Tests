@@ -1,0 +1,11 @@
+standalone
+
+mac
+docker run -d -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:latest
+
+windows:
+docker run -d -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest
+
+docker compose :
+ docker compose -f docker-compose-v3.yml up --scale chrome=5 -d
+ docker compose -f docker-compose-v3.yml down

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: selenium-node-chrome
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: selenium-node-chrome

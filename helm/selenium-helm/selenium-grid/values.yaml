@@ -1,4 +1,4 @@
 image:
   hub: "selenium/hub:4.17.0-20240123"
-  chrome: "selenium/node-chrome:latest"
+  chrome: "seleniarm/node-chromium:latest"
   firefox: "selenium/node-firefox:latest"

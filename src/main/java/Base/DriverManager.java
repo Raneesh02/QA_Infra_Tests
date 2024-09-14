@@ -16,14 +16,14 @@ public class DriverManager {
 
     public static WebDriver initDriver()  {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
 
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-dev-shm-usage");
-        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--headless");
 
 //        threadLocalDriver.set(new ChromeDriver(chromeOptions));
         try {
@@ -31,6 +31,7 @@ public class DriverManager {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        threadLocalDriver.get().manage().window().maximize();
         return threadLocalDriver.get();
     }
 
