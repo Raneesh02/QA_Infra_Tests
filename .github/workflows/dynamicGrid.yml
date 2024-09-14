@@ -76,6 +76,9 @@ jobs:
 
       - name: Wait for selenium grid to be ready
         run: |
+          ls
+          cd ../../
+          ls
           chmod +x scripts/wait-for-selenium-hub.sh
           scripts/waitforseleniumhub.sh ${{ env.SERVICE_URL }}  
 
