@@ -15,6 +15,10 @@ jobs:
       pull-requests: write
       actions: write
 
+    env:
+      # Define a dynamic release name using GitHub Actions run ID for uniqueness
+      RELEASE_NAME: selenium-grid-${{ github.run_id }}
+
     steps:
       - uses: actions/checkout@v4
 #      - name: Set up JDK 22
@@ -55,7 +59,14 @@ jobs:
       - name: Deploy with kubectl
         run: |
           kubectl get pods
-      # - name: Install Helm Chart
-      #   run: |
-      #     helm repo add stable https://charts.helm.sh/stable
-      #     helm install my-release stable/my-chart
+      - name: Install Helm Chart
+        run: |
+         cd helm/selenium-helm
+         helm install ${{ env.RELEASE_NAME }} selenium-grid
+
+      - name: Test Deployment
+        run: kubectl get all
+
+  post:
+    - name: Cleanup Helm Chart
+      run: helm uninstall ${{ env.RELEASE_NAME }}
