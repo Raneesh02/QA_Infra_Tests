@@ -74,6 +74,11 @@ jobs:
           echo "SERVICE_URL=${SERVICE_URL}" >> $GITHUB_ENV
           echo "Service URL is ${{ env.SERVICE_URL }}"
 
+      - name: Wait for selenium grid to be ready
+        run: |
+          chmod +x scripts/wait-for-selenium-hub.sh
+          scripts/waitforseleniumhub.sh ${{ env.SERVICE_URL }}  
+
       - name: test with maven
         run: mvn clean test -Dselenium.gridurl=${{ env.SERVICE_URL }}
       - name: Report test results
