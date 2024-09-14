@@ -49,6 +49,9 @@ jobs:
       - name: Check aws config done
         run: |
           aws sts get-caller-identity
+      - name: Set up kubeconfig for EKS
+        run: |
+          aws eks update-kubeconfig --region ap-south-1 --name selenium-grid
       - name: Deploy with kubectl
         run: |
           kubectl get pods
