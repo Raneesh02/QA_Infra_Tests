@@ -12,6 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!--suppress UnresolvedMavenProperty -->
+    <selenium.gridurl>${selenium.gridurl}</selenium.gridurl>
   </properties>
 
   <dependencies>

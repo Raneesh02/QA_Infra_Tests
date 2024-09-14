@@ -12,7 +12,8 @@ import java.net.URL;
 
 public class DriverManager {
 
-    private static ThreadLocal<WebDriver> threadLocalDriver= new ThreadLocal<>();;
+    private static ThreadLocal<WebDriver> threadLocalDriver= new ThreadLocal<>();
+    private static String gridUrl="http://localhost:4444";
 
     public static WebDriver initDriver()  {
         FirefoxOptions options = new FirefoxOptions();
@@ -25,9 +26,13 @@ public class DriverManager {
         chromeOptions.addArguments("--disable-dev-shm-usage");
 //        chromeOptions.addArguments("--headless");
 
-//        threadLocalDriver.set(new ChromeDriver(chromeOptions));
+        System.out.println("env variable gridurl "+System.getProperty("selenium.gridurl"));
+        if(System.getProperty("selenium.gridurl")!=null){
+          gridUrl =  "http://"+System.getProperty("selenium.gridurl")+":4444";
+        }
+        System.out.println("Grid url used: "+gridUrl);
         try {
-            threadLocalDriver.set(new RemoteWebDriver(new URL("http://localhost:4444"),chromeOptions));
+            threadLocalDriver.set(new RemoteWebDriver(new URL(gridUrl),chromeOptions));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
