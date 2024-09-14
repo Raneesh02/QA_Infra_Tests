@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: selenium-node-chrome
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: selenium-node-chrome
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: selenium-node-chrome
-          image: selenium/node-chrome:latest
+          image: seleniarm/node-chromium:latest
           env:
             - name: TZ
               value: Asia/Kolkata
