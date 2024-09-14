@@ -70,7 +70,7 @@ jobs:
       - name: Get Service URL
         id: get_service_url
         run: |
-          SERVICE_URL=$(kubectl get svc <service-name> -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' || kubectl get svc <service-name> -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          SERVICE_URL=$(kubectl get svc selenium-hub-service -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
           echo "SERVICE_URL=${SELGRID_URL}" >> $GITHUB_ENV
           echo "Service URL is ${{ env.SELGRID_URL }}"
 
