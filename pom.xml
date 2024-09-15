@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <selenium.gridurl>"http://localhost:4444"</selenium.gridurl>
   </properties>
 
   <dependencies>
